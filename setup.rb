@@ -41,7 +41,8 @@ APPS = [
   App("dropbox"),
   App("kap"),
   App("sip"),
-  App("toggl")
+  App("toggl"),
+  App("iterm2")
 ]
 
 BINS = [
