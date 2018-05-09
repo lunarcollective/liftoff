@@ -40,7 +40,8 @@ APPS = [
   App("slack"),
   App("dropbox"),
   App("kap"),
-  App("sip")
+  App("sip"),
+  App("toggl")
 ]
 
 BINS = [
