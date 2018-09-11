@@ -33,10 +33,12 @@ end
 
 APPS = [
   App("google-chrome"),
+  App("firefox"),
   App("1password"),
   App("elm-platform"),
   App("macdown"),
   App("atom"),
+  App("visual-studio-code"),
   App("slack"),
   App("dropbox"),
   App("kap"),
@@ -75,6 +77,7 @@ PACKAGES = [
   Node("jest"),
   Node("react"),
   Node("prettier"),
+  Node("eslint"),
   Atom("atom-beautify"),
   Atom("atom-elixir"),
   Atom("atom-elixir-formatter"),
