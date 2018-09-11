@@ -30,8 +30,10 @@ def Atom(name, opts = [])
   Package.new("apm", name, opts)
 end
 
+class Set < Struct.new(:name, :items); end
 
-APPS = [
+
+APPS = Set.new("Apps", [
   App("google-chrome"),
   App("firefox"),
   App("1password"),
@@ -45,9 +47,9 @@ APPS = [
   App("sip"),
   App("toggl"),
   App("iterm2")
-]
+])
 
-BINS = [
+BINS = Set.new("Programs, [
   Bin(:openssl),
   Bin(:git, ["--with-brewed-openssl"]),
   Bin(:node, ["--with-openssl"]),
@@ -69,9 +71,9 @@ BINS = [
     "--with-lua",
     "--with-client-server"
   ])
-]
+])
 
-PACKAGES = [
+PACKAGES = Set.new("Packages", [
   Node("create-elm-app"),
   Node("elm-format"),
   Node("jest"),
@@ -95,9 +97,10 @@ PACKAGES = [
   Atom("react"),
   Atom("teletype"),
   Atom("vim-mode-plus")
-]
+])
 
-[BINS, APPS, PACKAGES].each do |sets|
-  sets.each(&:install!)
+[BINS, APPS, PACKAGES].each do |set|
+  puts " == Now installing #{set.name} ==="
+  set.items.each(&:install!)
 end
 
