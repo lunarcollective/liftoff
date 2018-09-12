@@ -14,17 +14,62 @@
 exec /usr/bin/env ruby --disable-gems -x "$0" $*
 #!ruby
 
+def run(cmd)
+ return puts cmd if ENV["TEST"]
+ unless system cmd
+   fail
+ end
+end
+
+def say(msg)
+  puts ""
+  puts ""
+  puts msg
+  puts ""
+end
+
 Array(1..5).reverse.each do |n|
   system("clear && printf '\e[3J'")
   system("cat bwlogo.txt")
   puts "#{n}..."
   sleep 0.75
 end
-puts "LIFT OFF"
+say "LIFT OFF"
 
-# Install RVM
+say "=== Installing Homebrew ==="
+run %{/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"}
 
-# Install Ruby
+say "--- Installing Homebrew Cask ---"
+run "brew tap caskroom/cask"
+run "brew install brew-cask"
 
-# Install Homebrew
+say "=== Installing ZSH ==="
+run %{sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"}
 
+say "=== Running Setup Script ==="
+run "ruby setup.rb"
+
+say "=== Installing RVM ==="
+say "---- This Might Fail ----"
+say "(sorry)"
+run "gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB"
+run "\curl -sSL https://get.rvm.io | bash -s stable --ruby --gems=bundler,pry"
+
+
+say "=== Installing Magic Wormhole ==="
+run "pip install -user magic-wormhole"
+run %{echo "alias wormhole='~/Library/Python/2.7/bin/wormhole'" >> ~/.zshrc}
+
+say "=== DONE! ==="
+
+say "... calculating next steps ..."
+
+say """
+  Things to do on your own:
+
+    - Install _correct_ Ruby version for your projects.
+    - Setup your SSH Keys
+    - Setup your dotfiles
+    - Configure your Editor
+    - Fix any steps that may have failed during the installation process and open a Pull Request.
+"""
