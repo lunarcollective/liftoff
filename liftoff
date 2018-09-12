@@ -36,6 +36,9 @@ Array(1..5).reverse.each do |n|
 end
 say "LIFT OFF"
 
+say "=== Installing Xcode Tools ==="
+run "xcode-select --install"
+
 say "=== Installing Homebrew ==="
 run %{/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"}
 
