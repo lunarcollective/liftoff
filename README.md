@@ -1,8 +1,12 @@
 # liftoff 🚀
 New Laptop Setup Script
 
+## Automated
 
-## New Computer Setup
+1. `git clone git@github.com:lunarcollective/liftoff.git`
+2. `./liftoff`
+
+## Manual
 
 1. Login to Github
 2. Install Home-brew
