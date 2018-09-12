@@ -46,6 +46,7 @@ APPS = Set.new("Apps", [
   App("kap"),
   App("sip"),
   App("toggl"),
+  App("virtual-box"),
   App("iterm2")
 ])
 
@@ -63,6 +64,9 @@ BINS = Set.new("Programs, [
   Bin(:elixir),
   Bin(:ffmpeg),
   Bin(:hub),
+  Bin(:zsh),
+  Bin(:zsh-completions),
+  Bin(:gpg),
   Bin(:heroku),
   Bin(:vim, [
     "--HEAD",
